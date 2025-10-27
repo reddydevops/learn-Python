@@ -1,0 +1,11 @@
+print("Hello World")
+
+# Get user input for number of days
+num_of_days = input("Enter number of days to convert into minutes: ")
+
+# Function to convert days to minutes
+def days_to_units(num_of_days):
+    return f"{num_of_days} days are {num_of_days * calc_to_mins} {name_of_unit}"
+
+# Call the function (currently not passing the input value)
+days_to_units()

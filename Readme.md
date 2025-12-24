@@ -6,6 +6,8 @@ This repository contains a collection of Python scripts and modules for various 
 ## Technology Stack
 - Python 3.x
 - Standard Python libraries (subprocess, sys, etc.)
+- Azure SDK (azure-identity, azure-mgmt-storage, azure-core)
+- Snowflake Connector (snowflake-connector-python)
 
 ## Project Architecture
 The project is organized as a flat structure with individual Python scripts for different functionalities. Each script is self-contained and can be run independently. There is currently no centralized application architecture or framework in use.
@@ -45,10 +47,34 @@ The repository contains scripts that interact with Azure (for example `importsql
    python importsql.py
    ```
 
+### Snowflake scripts (setup)
+
+The repository contains scripts that interact with Snowflake (for example `deploy_snowflake_sql.py`). To use these scripts you should:
+
+1. Install the Python dependencies:
+   ```powershell
+   python -m pip install -r requirements.txt
+   ```
+2. Set these environment variables (or export them in your CI environment):
+   - `SNOWFLAKE_ACCOUNT` — Snowflake account identifier (required)
+   - `SNOWFLAKE_USER` — Snowflake user (required)
+   - `SNOWFLAKE_PASSWORD` — Snowflake password (required)
+   - `SNOWFLAKE_WAREHOUSE` — Snowflake warehouse (optional)
+   - `SNOWFLAKE_DATABASE` — Snowflake database (optional)
+   - `SNOWFLAKE_SCHEMA` — Snowflake schema (optional)
+   - `SNOWFLAKE_ROLE` — Snowflake role (optional)
+
+3. Example (deploy SQL file):
+   ```powershell
+   python deploy_snowflake_sql.py --sql-file my_script.sql
+   ```
+
 
 ## Project Structure
 - `main.py` - Example script with a simple add function
 - `importsql.py` - Script for deploying Azure Storage Account
+- `deploy_snowflake_sql.py` - Script for deploying SQL to Snowflake
+- `get_storage_details.py` - Script for querying Azure Storage Account details
 - `learn.py` - Various Python function examples
 - `classes.py`, `files.py`, `info.py`, etc. - Additional scripts
 - `.github/` - GitHub configuration and prompts
